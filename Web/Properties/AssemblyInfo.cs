@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("ngApp.Web")]
+[assembly: AssemblyTitle("ngSpa.Web")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("HP Inc.")]
-[assembly: AssemblyProduct("ngApp.Web")]
+[assembly: AssemblyProduct("ngSpa.Web")]
 [assembly: AssemblyCopyright("Copyright © HP Inc. 2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("71866f9a-927d-4ebf-a58f-c59994b8b3c6")]
+[assembly: Guid("4ecdd7c3-8955-454e-a5c9-2ec66d89f184")]
 
 // Version information for an assembly consists of the following four values:
 //
