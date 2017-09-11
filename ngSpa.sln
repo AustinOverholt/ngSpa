@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ngSpa.Web", "Web\ngSpa.Web.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ngSpa.Services", "Services\ngSpa.Services.csproj", "{C614C029-30BA-45C2-A354-B394B945D426}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ngSpa.Model", "ngSpa.Model\ngSpa.Model.csproj", "{26A0E914-3309-41E3-9A6B-4A0B7FB5A41C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ngSpa.Model", "Model\ngSpa.Model.csproj", "{26A0E914-3309-41E3-9A6B-4A0B7FB5A41C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

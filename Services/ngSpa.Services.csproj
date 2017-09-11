@@ -43,7 +43,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ngSpa.Model\ngSpa.Model.csproj">
+    <ProjectReference Include="..\Model\ngSpa.Model.csproj">
       <Project>{26a0e914-3309-41e3-9a6b-4a0b7fb5a41c}</Project>
       <Name>ngSpa.Model</Name>
     </ProjectReference>
