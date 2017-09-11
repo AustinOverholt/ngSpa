@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html>
+<html ng-app="mainApp">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,7 +8,7 @@
     @Scripts.Render("~/bundles/modernizr")
 
 </head>
-<body>
+<body ng-controller="mainController as mainCtrl">
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -32,6 +32,16 @@
     <div class="container body-content">
         @RenderBody()
         <hr />
+        @*Test ui routing here*@
+        <div ng-app="routerApp">
+            <div class="row">
+                <a ui-sref="home" ui-sref-active="active">Home</a>
+                <a ui-sref="about" ui-sref-active="active">About</a>
+                <a ui-sref="contact" ui-sref-active="active">Contact</a>
+            </div>
+            <div ui-view></div>
+        </div>
+        <hr />
         <footer>
             <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
         </footer>
@@ -40,9 +50,11 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     <script src="~/Scripts/angular.min.js"></script>
+    <script src="~/Scripts/angular-ui-router.min.js"></script>
     <script src="~/Scripts/mainApp.js"></script>
     <script src="~/Scripts/mainController.js"></script>
     <script src="~/Scripts/mainService.js"></script>
+    <script src="~/Scripts/mainRouter.js"></script>
     @RenderSection("scripts", required: false)
 </body>
 </html>

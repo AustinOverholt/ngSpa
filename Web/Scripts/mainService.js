@@ -15,7 +15,7 @@
             getById: _getById,
             put: _put,
             delete: _delete,
-            truncate: _truncate,
+            truncate: _truncate
         };
 
         // POST
