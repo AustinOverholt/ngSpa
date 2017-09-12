@@ -12,12 +12,8 @@
         vm.$scope = $scope;
         vm.mainService = mainService;
         vm.$onInit = _init;
-        vm.people = [
-            { firstName: "Austin", lastName: "Overholt" },
-            { firstName: "Allie", lastName: "Overholt" }
-        ];
-
-
+        vm.person = { firstName: "Austin", lastName: "Overholt" };
+           
         // The fold 
 
         function _init() {

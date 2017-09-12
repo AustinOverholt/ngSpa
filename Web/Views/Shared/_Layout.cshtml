@@ -33,16 +33,16 @@
         @RenderBody()
         <hr />
         @*controller here*@
-        <div ng-repeat="person in people">
-            <p>{{mainCtrl.people.firstName}}</p>
+        <div>
+            <p>{{mainCtrl.person}}</p>
         </div>
         <hr />
         @*Test ui routing here*@
         <div ng-app="routerApp">
             <div class="row">
-                <a ui-sref="home" ui-sref-active="active">Home</a>
-                <a ui-sref="about" ui-sref-active="active">About</a>
-                <a ui-sref="contact" ui-sref-active="active">Contact</a>
+                <button ui-sref="home">Home</button>
+                <button ui-sref="about" ui-sref-active="active">About</button>
+                <button ui-sref="contact" ui-sref-active="active">Contact</button>
             </div>
             <div ui-view></div>
         </div>
