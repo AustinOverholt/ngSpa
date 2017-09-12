@@ -38,9 +38,9 @@
         </div>
         <hr />
         @*Test ui routing here*@
-        <div ng-app="routerApp">
+        <div>
             <div class="row">
-                <button ui-sref="home">Home</button>
+                <button ui-sref="home" ui-sref-active="active">Home</button>
                 <button ui-sref="about" ui-sref-active="active">About</button>
                 <button ui-sref="contact" ui-sref-active="active">Contact</button>
             </div>
@@ -59,7 +59,6 @@
     <script src="~/Scripts/mainApp.js"></script>
     <script src="~/Scripts/mainController.js"></script>
     <script src="~/Scripts/mainService.js"></script>
-    <script src="~/Scripts/mainRouter.js"></script>
     @RenderSection("scripts", required: false)
 </body>
 </html>
