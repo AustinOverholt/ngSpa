@@ -10,7 +10,7 @@
 
                 .state('home', {
                     url: '/home',
-                    templateUrl: 'partial-home.html'
+                    templateUrl: 'Views/Partial/partial-home.html'
                 })
 
                 .state('about', {

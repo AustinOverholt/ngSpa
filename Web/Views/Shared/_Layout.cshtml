@@ -32,6 +32,11 @@
     <div class="container body-content">
         @RenderBody()
         <hr />
+        @*controller here*@
+        <div ng-repeat="person in people">
+            <p>{{mainCtrl.people.firstName}}</p>
+        </div>
+        <hr />
         @*Test ui routing here*@
         <div ng-app="routerApp">
             <div class="row">
