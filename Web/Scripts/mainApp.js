@@ -4,23 +4,27 @@
         .module('mainApp', ['ui.router'])
         .config(function ($stateProvider) {
 
-            $stateProvider
-
-                .state('home', {
+            var home = {
+                    name: 'home',
                     url: '/home',
-                    template: '<h1>Hello World</h1>'
-                    //templateUrl: 'Views/Partial/partial-home.html'
-                })
+                    templateUrl: '/Scripts/Routes/Home.html'
+            }
 
-                .state('about', {
+            var about = {
+                    name: 'about',
                     url: '/about',
-                    templateUrl: 'partial-about.html'
-                })
+                    templateUrl: '/Scripts/Routes/About.html'
+            }
 
-                .state('contact', {
-                    url: '/contact',
-                    templateUrl: 'partial-contact.html'
-                });
+            var contact = {
+                name: 'contact',
+                url: '/contact',
+                templateUrl: '/Scripts/Routes/Contact.html'
+            }
+
+            $stateProvider.state(home);
+            $stateProvider.state(about);
+            $stateProvider.state(contact);
 
         });
 })();
