@@ -18,6 +18,12 @@
 
         function _init() {
             console.log('controller initialized');
+            _getUsers();
+        }
+
+        function _getUsers() {
+            console.log("get users called");
+            // on page load get list of users
         }
 
     }
