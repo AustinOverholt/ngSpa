@@ -274,9 +274,6 @@
     <Content Include="Scripts\Routes\About.html" />
     <Content Include="Scripts\Routes\Contact.html" />
     <Content Include="Scripts\Routes\Home.html" />
-    <Content Include="Views\Partial\partial-contact.html" />
-    <Content Include="Views\Partial\partial-about.html" />
-    <Content Include="Views\Partial\partial-home.html" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
