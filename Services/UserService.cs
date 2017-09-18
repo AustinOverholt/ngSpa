@@ -9,8 +9,14 @@ using System.Threading.Tasks;
 
 namespace ngSpa.Services
 {
+
     public class UserService
     {
+
+        public UserService()
+        {
+        }
+
         public List<Users> SelectAll()
         {
             List<Users> userList = new List<Users>();
