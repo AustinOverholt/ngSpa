@@ -1,10 +1,10 @@
 ﻿(function () {
-    'use strict';
+    "use strict";
     angular
-        .module('mainApp')
-        .factory('mainService', mainService);
+        .module("mainApp")
+        .factory("mainService", mainService);
 
-    mainService.$inject = ['$http', '$q'];
+    mainService.$inject = ["$http", "$q"];
 
     function mainService($http, $q) {
 

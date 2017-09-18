@@ -15,7 +15,6 @@ namespace ngSpa.Tests.Services
             UserService svc = new UserService();
             List<Users> model = svc.SelectAll();
             Assert.IsNotNull(model);
-
         }
     }
 }

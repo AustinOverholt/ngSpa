@@ -1,7 +1,7 @@
 ﻿(function () {
-    'use strict';
+    "use strict";
     angular
-        .module('mainApp', ['ui.router'])
+        .module("mainApp", ["ui.router"])
         .config(function ($stateProvider) {
 
             var home = {
