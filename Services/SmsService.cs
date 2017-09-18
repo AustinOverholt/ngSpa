@@ -7,7 +7,7 @@ using Twilio.Types;
 
 namespace ngSpa.Services
 {
-    class SmsService
+    public class SmsService
     {
         static void Main(string[] args)
         {

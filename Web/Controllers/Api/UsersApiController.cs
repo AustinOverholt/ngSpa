@@ -12,11 +12,7 @@ namespace ngSpa.Web.Controllers.Api
     [RoutePrefix("api/users")]
     public class UsersApiController : ApiController
     {
-        private IUserService _userService;
-        public UsersApiController(IUserService userService)
-        {
-            _userService = userService;
-        }
+        UserService userService = new UserService();
 
         [Route(), HttpGet]
         public HttpResponseMessage SelectAll()
@@ -24,7 +20,7 @@ namespace ngSpa.Web.Controllers.Api
             try
             {
                 ItemsResponse<Users> resp = new ItemsResponse<Users>();
-                resp.Items = _userService.SelectAll();
+                resp.Items = userService.SelectAll();
                 return Request.CreateResponse(HttpStatusCode.BadRequest, resp);
             }
             catch (Exception ex)
