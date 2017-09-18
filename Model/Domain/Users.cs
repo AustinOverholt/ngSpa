@@ -11,5 +11,6 @@ namespace ngSpa.Model
         public DateTime CreatedDate { get; set; }
         public DateTime ModifiedDate { get; set; }
         public string ModifiedBy { get; set; }
+        public string PhoneNumber { get; set; }
     }
 }
