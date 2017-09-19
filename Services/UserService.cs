@@ -51,6 +51,14 @@ namespace ngSpa.Services
             model.CreatedDate = reader.GetDateTime(index++);
             model.ModifiedDate = reader.GetDateTime(index++);
             model.ModifiedBy = reader.GetString(index++);
+            if (!reader.IsDBNull(index))
+            {
+                model.PhoneNumber = reader.GetString(index++);
+            }
+            else
+            {
+                index++;
+            }
 
             return model;
         }

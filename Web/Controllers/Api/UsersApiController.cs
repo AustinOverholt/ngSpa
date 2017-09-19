@@ -21,7 +21,7 @@ namespace ngSpa.Web.Controllers.Api
             {
                 ItemsResponse<Users> resp = new ItemsResponse<Users>();
                 resp.Items = userService.SelectAll();
-                return Request.CreateResponse(HttpStatusCode.BadRequest, resp);
+                return Request.CreateResponse(HttpStatusCode.OK, resp);
             }
             catch (Exception ex)
             {
