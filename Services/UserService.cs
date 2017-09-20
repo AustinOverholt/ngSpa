@@ -30,6 +30,25 @@ namespace ngSpa.Services
         }
 
         // Select By Id
+        public  Users SelectById(int id)
+        {
+            Users model = new Users();
+            using (SqlConnection conn = new SqlConnection(connString))
+            {
+                conn.Open();
+                using (SqlCommand cmd = new SqlCommand("Users_SelectById", conn))
+                {
+                    cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@Id", id);
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    if (reader.Read())
+                        model = Mapper(reader);
+                }
+                conn.Close();
+            }
+            return model;
+        }
 
         // Insert
         public int Insert(UserAddRequest model)
