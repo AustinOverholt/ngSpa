@@ -2,19 +2,8 @@
 
 namespace ngSpa.Model.Requests
 {
-    public class UserUpdateRequest
+    public class UserUpdateRequest : UserAddRequest
     {
-        [Required]
-        public string FirstName { get; set; }
-
-        public string MiddleInitial { get; set; }
-
-        [Required]
-        public string LastName { get; set; }
-
-        [Required]
-        public string ModifiedBy { get; set; }
-
-        public string PhoneNumber { get; set; }
+        public int Id { get; set; }
     }
 }
