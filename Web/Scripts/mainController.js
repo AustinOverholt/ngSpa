@@ -39,5 +39,8 @@
                 console.log("Get users failed", err);
             }
         }
+
+        // Way to add users, Maybe add from registered users?
+
     }
 })();

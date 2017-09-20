@@ -1,4 +1,5 @@
 ﻿using ngSpa.Model;
+using ngSpa.Model.Requests;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -11,10 +12,11 @@ namespace ngSpa.Services
 {
     public class UserService : BaseService
     {
+        // Select
         public List<Users> SelectAll()
         {
             List<Users> userList = new List<Users>();
-            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
+            using (SqlConnection conn = new SqlConnection(connString))
             {
                 conn.Open();
                 using (SqlCommand cmd = new SqlCommand("dbo.Users_SelectAll", conn))
@@ -30,6 +32,35 @@ namespace ngSpa.Services
                     conn.Close();
             }
             return userList;
+        }
+
+        // Insert
+        public int Insert(UserAddRequest model)
+        {
+            int id = 0;
+            using (SqlConnection conn = new SqlConnection(connString))
+            {
+                conn.Open();
+                using (SqlCommand cmd = new SqlCommand("dbo.Users_Insert", conn))
+                {
+                    cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@FirstName", model.FirstName);
+                    cmd.Parameters.AddWithValue("@MiddleInitial", model.MiddleInitial);
+                    cmd.Parameters.AddWithValue("@LastName", model.LastName);
+                    cmd.Parameters.AddWithValue("@ModifiedBy", model.ModifiedBy);
+                    cmd.Parameters.AddWithValue("@PhoneNumber", model.PhoneNumber);
+
+                    SqlParameter parm = new SqlParameter("@Id", System.Data.SqlDbType.Int);
+                    parm.Direction = System.Data.ParameterDirection.Output;
+                    cmd.Parameters.Add(parm);
+
+                    cmd.ExecuteNonQuery();
+
+                    id = (int)cmd.Parameters["@Id"].Value;
+                }
+                conn.Close();
+            }
+            return id;
         }
 
         private Users Mapper(SqlDataReader reader)
