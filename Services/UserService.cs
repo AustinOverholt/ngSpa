@@ -61,9 +61,25 @@ namespace ngSpa.Services
         }
 
         // Update
-        public int Update(UserUpdateRequest model)
+        public void Update(UserUpdateRequest model)
         {
+            using (SqlConnection conn = new SqlConnection(connString))
+            {
+                conn.Open();
+                using (SqlCommand cmd = new SqlCommand("dbo.Users_Update", conn))
+                {
+                    cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@Id", model.Id);
+                    cmd.Parameters.AddWithValue("@FirstName", model.FirstName);
+                    cmd.Parameters.AddWithValue("@MiddleInitial", model.MiddleInitial);
+                    cmd.Parameters.AddWithValue("@LastName", model.LastName);
+                    cmd.Parameters.AddWithValue("@ModifiedBy", model.ModifiedBy);
+                    cmd.Parameters.AddWithValue("@PhoneNumber", model.PhoneNumber);
 
+                    cmd.ExecuteNonQuery();
+                }
+                conn.Close();
+            }
         }
 
         // Delete
