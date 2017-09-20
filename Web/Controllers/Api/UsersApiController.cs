@@ -1,4 +1,5 @@
 ﻿using ngSpa.Model;
+using ngSpa.Model.Requests;
 using ngSpa.Model.Responses;
 using ngSpa.Services;
 using ngSpa.Services.Interfaces;
@@ -21,6 +22,25 @@ namespace ngSpa.Web.Controllers.Api
             {
                 ItemsResponse<Users> resp = new ItemsResponse<Users>();
                 resp.Items = userService.SelectAll();
+                return Request.CreateResponse(HttpStatusCode.OK, resp);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ex);
+            }
+        }
+
+        [Route(), HttpPost]
+        public HttpResponseMessage Insert(UserAddRequest model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
+            }
+            try
+            {
+                ItemResponse<int> resp = new ItemResponse<int>();
+                resp.Item = userService.Insert(model);
                 return Request.CreateResponse(HttpStatusCode.OK, resp);
             }
             catch (Exception ex)
