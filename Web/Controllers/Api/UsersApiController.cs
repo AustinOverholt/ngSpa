@@ -30,6 +30,21 @@ namespace ngSpa.Web.Controllers.Api
             }
         }
 
+        [Route("{id:int}"), HttpGet]
+        public HttpResponseMessage SelectById(int id)
+        {
+            try
+            {
+                ItemResponse<Users> resp = new ItemResponse<Users>();
+                resp.Item = userService.SelectById(id);
+                return Request.CreateResponse(HttpStatusCode.OK, resp);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ex);
+            }
+        }
+
         [Route(), HttpPost]
         public HttpResponseMessage Insert(UserAddRequest model)
         {
