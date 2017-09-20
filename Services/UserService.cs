@@ -1,12 +1,7 @@
 ﻿using ngSpa.Model;
 using ngSpa.Model.Requests;
-using System;
 using System.Collections.Generic;
-using System.Configuration;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ngSpa.Services
 {
@@ -33,6 +28,8 @@ namespace ngSpa.Services
             }
             return userList;
         }
+
+        // Select By Id
 
         // Insert
         public int Insert(UserAddRequest model)
@@ -62,6 +59,14 @@ namespace ngSpa.Services
             }
             return id;
         }
+
+        // Update
+        public int Update(UserUpdateRequest model)
+        {
+
+        }
+
+        // Delete
 
         private Users Mapper(SqlDataReader reader)
         {
