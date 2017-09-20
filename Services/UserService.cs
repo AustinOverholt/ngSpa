@@ -83,6 +83,21 @@ namespace ngSpa.Services
         }
 
         // Delete
+        public void Delete(int id)
+        {
+            using (SqlConnection conn = new SqlConnection(connString))
+            {
+                conn.Open();
+                using (SqlCommand cmd = new SqlCommand("dbo.Users_Delete", conn))
+                {
+                    cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@Id", id);
+
+                    cmd.ExecuteNonQuery();
+                }
+                conn.Close();
+            }
+        }
 
         private Users Mapper(SqlDataReader reader)
         {
