@@ -17,37 +17,22 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("ngSpa", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li><a class="btn btn-link btn-lg" ui-sref="home" ui-sref-active="active">Home</a></li>
+                    <li><a class="btn btn-link" ui-sref="about" ui-sref-active="active">About</a></li>
+                    <li><a class="btn" ui-sref="contact" ui-sref-active="active">Contact</a></li>
+                    <li><a class="btn" ui-sref="users" ui-sref-active="active">Users</a></li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
         </div>
     </div>
     <div class="container body-content">
+        <div ui-view></div>
         @RenderBody()
-        <hr />
-        @*controller here*@
-        <div>
-            <p>{{mainCtrl.person}}</p>
-        </div>
-        <hr />
-        @*Test ui routing here*@
-        <div>
-            <div class="row">
-                <button ui-sref="home" ui-sref-active="active">Home</button>
-                <button ui-sref="about" ui-sref-active="active">About</button>
-                <button ui-sref="contact" ui-sref-active="active">Contact</button>
-                <button ui-sref="users" ui-sref-active="active">Users</button>
-            </div>
-            <div ui-view></div>
-        </div>
-        <hr />
+        <hr/>
         <footer>
             <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
         </footer>
