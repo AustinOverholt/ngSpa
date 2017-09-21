@@ -22,6 +22,8 @@
         }]
         vm.users = {};
         vm.usersForm = {};
+        vm.deleteButton = _deleteButton;
+        
            
         // The fold 
 
@@ -61,6 +63,22 @@
 
             function _postUserFailed(err) {
                 console.log("Post users failed", err);
+            }
+        }
+
+        function _deleteButton(data, index) {
+
+            mainService.delete("/api/users/", data)
+                .then(_deleteSuccess)
+                .catch(_deleteFailed)
+
+            function _deleteSuccess(res) {
+                console.log("Delete Success", res);
+                vm.users.splice(index, 1);
+            }
+
+            function _deleteFailed(err) {
+                console.log("Delete Failed", err);
             }
         }
 

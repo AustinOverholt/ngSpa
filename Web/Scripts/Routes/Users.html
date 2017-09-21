@@ -29,7 +29,7 @@
 </div>
 
 <div class="container-fluid">
-    <table class="table-condensed table-responsive table-hover">
+    <table class="table-condensed table-responsive table-hover table-striped">
         <thead>
             <tr>
                 <th>Id</th>
@@ -49,12 +49,12 @@
                 <td>{{users.FirstName}}</td>
                 <td>{{users.MiddleInitial}}</td>
                 <td>{{users.LastName}}</td>
-                <td>{{users.CreatedDate}}</td>
-                <td>{{users.ModifiedDate}}</td>
+                <td>{{users.CreatedDate | date:"MM/dd/yyyy 'at' h:mma" : '-1400'}}</td>
+                <td>{{users.ModifiedDate | date:"MM/dd/yyyy 'at' h:mma" : '-1400'}}</td>
                 <td>{{users.ModifiedBy}}</td>
                 <td>{{users.PhoneNumber}}</td>
                 <td><button class="btn btn-warning btn-sm">Edit</button></td>
-                <td><button class="btn btn-danger btn-sm">Delete</button></td>
+                <td><button ng-click="mainCtrl.deleteButton(users.Id, $index)" class="btn btn-danger btn-sm">Delete</button></td>
             </tr>
         </tbody>
     </table>
