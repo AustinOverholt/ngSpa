@@ -1,4 +1,5 @@
 ﻿using ngSpa.Model;
+using ngSpa.Model.Domain;
 using ngSpa.Model.Requests;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -119,6 +120,49 @@ namespace ngSpa.Services
         }
 
         // Grid
+        public UsersGrid GetGrid(GridRequest model)
+        {
+            UsersGrid singleItem = new UsersGrid();
+            using (SqlConnection conn = new SqlConnection(connString))
+            {
+                conn.Open();
+                using (SqlCommand cmd = new SqlCommand("dbo.Users_Grid", conn))
+                {
+                    cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@DisplayLength", model.displayLength);
+                    cmd.Parameters.AddWithValue("@DisplayStart", model.displayStart);
+                    cmd.Parameters.AddWithValue("@SortCol", model.sortCol);
+                    cmd.Parameters.AddWithValue("@SortDir", model.sortDir);
+                    cmd.Parameters.AddWithValue("@Search", model.search);
+
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    short set = new short();
+
+                    switch (set)
+                    {
+                        case 0:
+                            singleItem.recordsTotal = reader.GetInt32(0);
+                            break;
+                        case 1:
+                            singleItem.recordsFiltered = reader.GetInt32(0);
+                            break;
+                        case 2:
+                            Users u = Mapper(reader);
+                            if(singleItem.data == null)
+                            {
+                                singleItem.data = new List<Users>();
+                            }
+                            singleItem.data.Add(u);
+                            break;
+                        default:
+                            singleItem = null;
+                            break;
+                    }
+                }
+                conn.Close();
+            }
+            return singleItem;
+        }
 
         private Users Mapper(SqlDataReader reader)
         {
