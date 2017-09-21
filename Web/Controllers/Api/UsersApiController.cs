@@ -1,4 +1,5 @@
 ﻿using ngSpa.Model;
+using ngSpa.Model.Domain;
 using ngSpa.Model.Requests;
 using ngSpa.Model.Responses;
 using ngSpa.Services;
@@ -97,6 +98,26 @@ namespace ngSpa.Web.Controllers.Api
             SuccessResponse resp = new SuccessResponse();
             userService.Delete(id);
             return Request.CreateResponse(HttpStatusCode.OK, resp);
+        }
+
+        [Route("grid"), HttpPost]
+        public HttpResponseMessage GetGrid(GridRequest model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
+            }
+            try
+            {
+                ItemResponse<UsersGrid> resp = new ItemResponse<UsersGrid>();
+                resp.Item = userService.GetGrid(model);
+                return Request.CreateResponse(HttpStatusCode.OK, resp);
+
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ex);
+            }
         }
     }
 }

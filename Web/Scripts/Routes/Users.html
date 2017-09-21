@@ -28,7 +28,40 @@
     </form>
 </div>
 
-<div class="ibox-content">
+<div class="container-fluid">
+    <table class="table-condensed table-responsive table-hover">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>First Name</th>
+                <th>Middle</th>
+                <th>Last Name</th>
+                <th>Created Date</th>
+                <th>Modified Date</th>
+                <th>Modified By</th>
+                <th>Phone Number</th>
+                <th class="text-center" colspan="2">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="users in mainCtrl.users">
+                <td>{{users.Id}}</td>
+                <td>{{users.FirstName}}</td>
+                <td>{{users.MiddleInitial}}</td>
+                <td>{{users.LastName}}</td>
+                <td>{{users.CreatedDate}}</td>
+                <td>{{users.ModifiedDate}}</td>
+                <td>{{users.ModifiedBy}}</td>
+                <td>{{users.PhoneNumber}}</td>
+                <td><button class="btn btn-warning btn-sm">Edit</button></td>
+                <td><button class="btn btn-danger btn-sm">Delete</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<!--Form for later-->
+<!--<div class="ibox-content">
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12">
@@ -126,9 +159,9 @@
                             <td>{{items.ModifiedBy}}</td>
                             <td>{{items.PhoneNumber}}</td>
                             <td><button>Edit</button></td>
-                            <td><button>Delete</button></td>
+                            <td><button>Delete</button></td>-->
                             <!--ng-click="mainCtrl.deleteRowButton(items.id, $index)-->
-                        </tr>
+                        <!--</tr>
                     </tbody>
                 </table>
                 <div class="row-inline" align="center">
@@ -147,9 +180,8 @@
             </div>
         </div>
     </div>
-</div>
+</div>-->
 {{mainCtrl.usersForm}}
-{{mainCtrl.users}}
 
 <!--Add form to enter users
     Create modal? 
