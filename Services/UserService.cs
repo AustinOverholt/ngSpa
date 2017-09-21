@@ -118,6 +118,8 @@ namespace ngSpa.Services
             }
         }
 
+        // Grid
+
         private Users Mapper(SqlDataReader reader)
         {
             Users model = new Users();
