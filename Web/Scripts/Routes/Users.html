@@ -3,27 +3,156 @@
     <h1>Users</h1>
     <p class="lead">Welcome to the Users page</p>
     <hr/>
-    <form role="form">
+    <form name="userForm" role="form">
         <div class="form-group">
             <label for="firstName">First Name</label>
-            <input type="text" class="form-control" id="firstName" placeholder="First Name">
+            <input ng-model="mainCtrl.usersForm.FirstName" type="text" class="form-control" id="firstName" placeholder="First Name">
         </div>
         <div class="form-group">
-            <label for="firstName">Middle Initial</label>
-            <input type="text" class="form-control" id="middleInitial" placeholder="Middle Initial">
+            <label for="MiddleInitial">Middle Initial</label>
+            <input ng-model="mainCtrl.usersForm.MiddleInitial" ngtype="text" class="form-control" id="middleInitial" placeholder="Middle Initial">
         </div>
         <div class="form-group">
-            <label for="firstName">Last Name</label>
-            <input type="text" class="form-control" id="lastName" placeholder="Last Name">
+            <label for="LastName">Last Name</label>
+            <input ng-model="mainCtrl.usersForm.LastName" type="text" class="form-control" id="lastName" placeholder="Last Name">
         </div>
         <div class="form-group">
-            <label for="firstName">Phone Number</label>
-            <input type="number" class="form-control" id="phoneNumber" placeholder="Phone Number">
+            <label for="ModifiedBy">Modified By</label>
+            <input ng-model="mainCtrl.usersForm.ModifiedBy" type="text" class="form-control" id="modifiedBy" placeholder="Modified By">
         </div>
-        <button type="submit" class="btn btn-default">Submit</button>
+        <div class="form-group">
+            <label for="PhoneNumber">Phone Number</label>
+            <input ng-model="mainCtrl.usersForm.PhoneNumber" type="number" class="form-control" id="phoneNumber" placeholder="Phone Number">
+        </div>
+        <button ng-click="mainCtrl.postUsers()" type="submit" class="btn btn-default">Submit</button>
     </form>
 </div>
+
+<div class="ibox-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <form>
+                    <div class="form-group col-sm-5">
+                        <span class="label label-default">Search/Filter</span>
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Search" ng-model="searchText">
+                            <a class="input-group-addon" ng-click="errorIndexCtrl.searchTerm(searchText)"><i class="fa fa-search" aria-hidden="true"></i> Search</a>
+                        </div>
+                    </div>
+                    <div class="form-group col-sm-5" align="center">
+                        <h5 ng-cloak>Showing {{errorIndexCtrl.showingFirst}} - {{errorIndexCtrl.showingLast}} of {{errorIndexCtrl.item.recordsFiltered}} Errors</h5>
+                        <button class="label label-default" ng-cloak ng-show="errorIndexCtrl.item.recordsTotal>errorIndexCtrl.item.recordsFiltered" ng-click="errorIndexCtrl.resetFilter()">Reset Filter</button>
+                    </div>
+                    <div class="form-group col-sm-2">
+                        <span class="label label-default">Display per Page</span>
+                        <select class="form-control" ng-model="display" ng-change="errorIndexCtrl.displayPage(display)">
+                            <option value="10">10</option>
+                            <option value="25">25</option>
+                            <option value="50">50</option>
+                        </select>
+                    </div>
+                </form>
+                <table class="table table-hover table-condensed table-responsive">
+                    <thead>
+                        <tr>
+                            <th>
+                                <a href="#" ng-click="errorIndexCtrl.sortOrder(0)" style="text-decoration:none; color:inherit;">
+                                    <i class="" aria-hidden="true"></i>Id
+                                    <span ng-show="errorIndexCtrl.config[0].sortCol == '0' && errorIndexCtrl.config[0].sortDir == 'asc'" class="fa fa-caret-down"></span>
+                                    <span ng-show="errorIndexCtrl.config[0].sortCol == '0' && errorIndexCtrl.config[0].sortDir == 'desc'" class="fa fa-caret-up"></span>
+                                </a>
+                            </th>
+                            <th>
+                                <a href="#" ng-click="errorIndexCtrl.sortOrder(1)" style="text-decoration:none; color:inherit;">
+                                    <i class="" aria-hidden="true"></i>FirstName
+                                    <span ng-show="errorIndexCtrl.config[0].sortCol == '1' && errorIndexCtrl.config[0].sortDir == 'asc'" class="fa fa-caret-down"></span>
+                                    <span ng-show="errorIndexCtrl.config[0].sortCol == '1' && errorIndexCtrl.config[0].sortDir == 'desc'" class="fa fa-caret-up"></span>
+                                </a>
+                            </th>
+                            <th>
+                                <a href="#" ng-click="errorIndexCtrl.sortOrder(2)" style="text-decoration:none; color:inherit;">
+                                    <i class="fa fa-error-circle-o" aria-hidden="true"></i>MiddleInitial
+                                    <span ng-show="errorIndexCtrl.config[0].sortCol == '2' && errorIndexCtrl.config[0].sortDir == 'asc'" class="fa fa-caret-down"></span>
+                                    <span ng-show="errorIndexCtrl.config[0].sortCol == '2' && errorIndexCtrl.config[0].sortDir == 'desc'" class="fa fa-caret-up"></span>
+                                </a>
+                            </th>
+                            <th class="hidden">
+                                <a href="#" ng-click="errorIndexCtrl.sortOrder(3)" style="text-decoration:none; color:inherit;">
+                                    <i class="fa fa-error-circle-o" aria-hidden="true"></i>LastName
+                                    <span ng-show="errorIndexCtrl.config[0].sortCol == '3' && errorIndexCtrl.config[0].sortDir == 'asc'" class="fa fa-caret-down"></span>
+                                    <span ng-show="errorIndexCtrl.config[0].sortCol == '3' && errorIndexCtrl.config[0].sortDir == 'desc'" class="fa fa-caret-up"></span>
+                                </a>
+                            </th>
+                            <th>
+                                <a href="#" ng-model-options="{timezone: 'utc'}" ng-click="errorIndexCtrl.sortOrder(4)" style="text-decoration:none; color:inherit;">
+                                    <i class="fa fa-error-circle-o" aria-hidden="true"></i>Created Date
+                                    <span ng-show="errorIndexCtrl.config[0].sortCol == '4' && errorIndexCtrl.config[0].sortDir == 'asc'" class="fa fa-caret-down"></span>
+                                    <span ng-show="errorIndexCtrl.config[0].sortCol == '4' && errorIndexCtrl.config[0].sortDir == 'desc'" class="fa fa-caret-up"></span>
+                                </a>
+                            </th>
+                            <th>
+                                <a href="#" ng-click="errorIndexCtrl.sortOrder(5)" style="text-decoration:none; color:inherit;">
+                                    <i class="fa fa-error-circle-o" aria-hidden="true"></i>Modified Date
+                                    <span ng-show="errorIndexCtrl.config[0].sortCol == '5' && errorIndexCtrl.config[0].sortDir == 'asc'" class="fa fa-caret-down"></span>
+                                    <span ng-show="errorIndexCtrl.config[0].sortCol == '5' && errorIndexCtrl.config[0].sortDir == 'desc'" class="fa fa-caret-up"></span>
+                                </a>
+                            </th>
+                            <th>
+                                <a href="#" ng-click="errorIndexCtrl.sortOrder(6)" style="text-decoration:none; color:inherit;">
+                                    <i class="fa fa-error-circle-o" aria-hidden="true"></i>Modified By
+                                    <span ng-show="errorIndexCtrl.config[0].sortCol == '6' && errorIndexCtrl.config[0].sortDir == 'asc'" class="fa fa-caret-down"></span>
+                                    <span ng-show="errorIndexCtrl.config[0].sortCol == '6' && errorIndexCtrl.config[0].sortDir == 'desc'" class="fa fa-caret-up"></span>
+                                </a>
+                            </th>
+                            <th>
+                                <a href="#" ng-click="errorIndexCtrl.sortOrder(7)" style="text-decoration:none; color:inherit;">
+                                    <i class="fa fa-error-circle-o" aria-hidden="true"></i>Phone Number
+                                    <span ng-show="errorIndexCtrl.config[0].sortCol == '7' && errorIndexCtrl.config[0].sortDir == 'asc'" class="fa fa-caret-down"></span>
+                                    <span ng-show="errorIndexCtrl.config[0].sortCol == '7' && errorIndexCtrl.config[0].sortDir == 'desc'" class="fa fa-caret-up"></span>
+                                </a>
+                            </th>
+                            <th colspan="2">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="items in mainCtrl.item.data" ng-cloak>
+                            <td><strong>{{items.id}}</strong></td>
+                            <td>{{items.FirstName}}</td>
+                            <td>{{items.MiddleInitial}}</td>
+                            <td>{{items.LastName}}</td>
+                            <td>{{items.CreatedDate | date:"MM/dd/yyyy 'at' h:mma" : '-1400'}}</td>
+                            <td>{{items.ModifiedDate}}</td>
+                            <td>{{items.ModifiedBy}}</td>
+                            <td>{{items.PhoneNumber}}</td>
+                            <td><button>Edit</button></td>
+                            <td><button>Delete</button></td>
+                            <!--ng-click="errorIndexCtrl.deleteRowButton(items.id, $index)-->
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="row-inline" align="center">
+                    <ul class="pagination">
+                        <li><a href="#" ng-class="{'disabled': errorIndexCtrl.config[0].displayStart == 0}" ng-click="errorIndexCtrl.pagination('start')"><i class="fa fa-angle-double-left" aria-hidden="true"></i></a></li>
+                        <li><a href="#" ng-class="{'disabled': errorIndexCtrl.config[0].displayStart == 0}" ng-click="errorIndexCtrl.pagination('previous')"><i class="fa fa-angle-left" aria-hidden="true"></i></a></li>
+                        <li><a href="#" class="disabled" ng-cloak>{{errorIndexCtrl.page}}</a></li>
+                        <li><a href="#" ng-class="{'disabled': errorIndexCtrl.showingLast == errorIndexCtrl.item.recordsFiltered}" ng-click="errorIndexCtrl.pagination('next')"><i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
+                        <li><a href="#" ng-class="{'disabled': errorIndexCtrl.showingLast == errorIndexCtrl.item.recordsFiltered}" ng-click="errorIndexCtrl.pagination('end')"><i class="fa fa-angle-double-right" aria-hidden="true"></i></a></li>
+                    </ul>
+                    <div class="pull-right">
+                        <button id="deleteAllBtn" ng-click="errorIndexCtrl.deleteAllButton()" class="btn btn-sm btn-danger">Delete All</button>
+                        <button id="deleteSelectedBtn" ng-click="errorIndexCtrl.deleteChecked()" class="btn btn-sm btn-danger">Delete Selected</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{{mainCtrl.usersForm}}
 {{mainCtrl.users}}
 
 <!--Add form to enter users
+    Create modal? 
+    Ui bootstrap?
+    Add validation
 Add grid to display users and info-->

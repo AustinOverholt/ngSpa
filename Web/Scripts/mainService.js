@@ -31,7 +31,6 @@
 
             function _postFailed(err) {
                 console.log("Post Failed", err);
-                _errorParse(err);
                 return $q.reject(err);
             }
         }
@@ -49,7 +48,6 @@
 
             function _postByIdFailed(err) {
                 console.log("Post by id failed", err);
-                _errorParse(err);
                 return $q.reject(err);
             }
         }
@@ -67,7 +65,6 @@
 
             function _getFailed(err) {
                 console.log("Get Failed", err);
-                _errorParse(err);
                 return $q.reject(err);
             }
         }
@@ -85,7 +82,6 @@
 
             function _getByIdFailed(err) {
                 console.log("Get by id failed", err);
-                _errorParse(err);
                 return $q.reject(err);
             }
         }
@@ -103,7 +99,6 @@
 
             function _putFailed(err) {
                 console.log("Put Failed", err);
-                _errorParse(err);
                 return $q.reject(err);
             }
         }
@@ -121,7 +116,6 @@
 
             function _deleteFailed(err) {
                 console.log("Delete Failed", err);
-                _errorParse(err);
                 return $q.reject(err);
             }
         }
@@ -139,7 +133,6 @@
 
             function _truncateFailed(err) {
                 console.log("Truncate Failed", err);
-                _errorParse(err);
                 return $q.reject(err);
             }
         }

@@ -11,14 +11,23 @@
         var vm = this;
         vm.$scope = $scope;
         vm.mainService = mainService;
+        vm.postUsers = _postUsers;
         vm.$onInit = _init;
-        vm.person = { firstName: "Austin", lastName: "Overholt" };
-        vm.users = [];
+        vm.config = [{
+            "displayLength": "10",
+            "displayStart": "0",
+            "sortCol": "0",
+            "sortDir": "asc",
+            "search": ""
+        }]
+        vm.users = {};
+        vm.usersForm = {};
            
         // The fold 
 
         function _init() {
             console.log("controller initialized");
+            // do post for grid
             _getUsers();
         }
 
@@ -29,9 +38,9 @@
                 .then(_getUsersSuccess)
                 .catch(_getUsersFailed);
 
-            function _getUsersSuccess(resp) {
-                console.log("Get users success", resp);
-                vm.users = resp.data.Items;
+            function _getUsersSuccess(res) {
+                console.log("Get users success", res);
+                vm.users = res.data.Items;
                 console.log(vm.users);
             }
 
@@ -40,7 +49,20 @@
             }
         }
 
-        // Way to add users, Maybe add from registered users?
+        function _postUsers() {
+            console.log(vm.usersForm);
+            mainService.post("/api/users/", vm.usersForm)
+                .then(_postUserSuccess)
+                .catch(_postUserFailed);
+
+            function _postUserSuccess(res) {
+                console.log("Post users success", res);
+            }
+
+            function _postUserFailed(err) {
+                console.log("Post users failed", err);
+            }
+        }
 
     }
 })();
