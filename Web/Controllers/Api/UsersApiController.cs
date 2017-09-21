@@ -65,7 +65,7 @@ namespace ngSpa.Web.Controllers.Api
             }
         }
 
-        [Route(), HttpPut]
+        [Route("{id:int}"), HttpPut]
         public HttpResponseMessage Update(UserUpdateRequest model)
         {
             if (!ModelState.IsValid)

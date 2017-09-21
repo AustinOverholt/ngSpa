@@ -22,7 +22,9 @@
         }]
         vm.users = {};
         vm.usersForm = {};
+        vm.editUser = null;
         vm.deleteButton = _deleteButton;
+        vm.editButton = _editButton;
         
            
         // The fold 
@@ -53,21 +55,54 @@
 
         function _postUsers() {
             console.log(vm.usersForm);
-            mainService.post("/api/users/", vm.usersForm)
-                .then(_postUserSuccess)
-                .catch(_postUserFailed);
+            if (vm.editUser == null) {
+                mainService.post("/api/users/", vm.usersForm)
+                    .then(_postSuccess)
+                    .catch(_postFailed);
 
-            function _postUserSuccess(res) {
-                console.log("Post users success", res);
+                function _postSuccess(res) {
+                    console.log("Post users success", res);
+                }
+
+                function _postFailed(err) {
+                    console.log("Post users failed", err);
+                }
+            } else {
+                mainService.put("/api/users/", vm.editUser, vm.usersForm)
+                    .then(_putSuccess)
+                    .catch(_putFailed);
+
+                function _putSuccess(res) {
+                    console.log("Put Success", res);
+                }
+
+                function _putFailed(err) {
+                    console.log("Put Failed", err);
+                }
+
+            }
+        }
+
+        function _editButton(data) {
+            mainService.getById("/api/users/", data)
+                .then(_getByIdSuccess)
+                .catch(_getByIdFailed)
+
+            function _getByIdSuccess(res) {
+                vm.editUser = data;
+                console.log(vm.editUser);
+                console.log("Get Success", res);
+                vm.usersForm = res.data.Item; 
+                // populate form with response
+
             }
 
-            function _postUserFailed(err) {
-                console.log("Post users failed", err);
+            function _getByIdFailed(err) {
+                console.log("Get Failed", err);
             }
         }
 
         function _deleteButton(data, index) {
-
             mainService.delete("/api/users/", data)
                 .then(_deleteSuccess)
                 .catch(_deleteFailed)
