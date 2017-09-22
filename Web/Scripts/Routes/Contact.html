@@ -2,7 +2,12 @@
 <div class="jumbotron">
     <h1>Scraping</h1>
     <p class="lead">Welcome to Web Scraper</p>
+    <form name="scraperForm" role="form">
+        <div class="form-group">
+            <label for="Url">Url</label>
+            <input ng-model="mainCtrl.scraperForm.html" type="text" class="form-control" id="Url" placeholder="Url">
+        </div> <!--Add a filter-->
+        <button ng-click="mainCtrl.postScraper()" type="submit" class="btn btn-default">Submit</button>
+    </form>
 </div>
-
-<!--Add scraper here?
-    Form for entering url and filter -->
+{{mainCtrl.scrapedResults}}

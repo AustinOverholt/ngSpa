@@ -21,10 +21,13 @@
             "search": ""
         }]
         vm.users = {};
+        vm.scrapedResults = {};
         vm.usersForm = {};
+        vm.scraperForm = {};
         vm.editUser = null;
         vm.deleteButton = _deleteButton;
         vm.editButton = _editButton;
+        vm.postScraper = _postScraper;
         
            
         // The fold 
@@ -93,8 +96,6 @@
                 console.log(vm.editUser);
                 console.log("Get Success", res);
                 vm.usersForm = res.data.Item; 
-                // populate form with response
-
             }
 
             function _getByIdFailed(err) {
@@ -115,6 +116,24 @@
             function _deleteFailed(err) {
                 console.log("Delete Failed", err);
             }
+        }
+
+        function _postScraper() {
+            console.log("scraper clicked");
+            mainService.post("/api/scrape/", vm.scraperForm)
+                .then(_postSuccess)
+                .catch(_postFailed)
+
+            function _postSuccess(res) {
+                console.log("Post Successful", res);
+                vm.scrapedResults = res.data.Items;
+            }
+
+            function _postFailed(err) {
+                console.log("Post Failed", err);
+            }
+
+
         }
 
     }
