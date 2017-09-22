@@ -7,6 +7,14 @@
             <label for="Url">Url</label>
             <input ng-model="mainCtrl.scraperForm.html" type="text" class="form-control" id="Url" placeholder="Url">
         </div> <!--Add a filter-->
+        <div class="form-group">
+            <label for="Type">Type</label>
+            <select name="Type">
+                <option value="src">Picture</option>
+                <option value="div">Div</option>
+                <option value="p">P</option>
+            </select>
+        </div>
         <button ng-click="mainCtrl.postScraper()" type="submit" class="btn btn-default">Submit</button>
     </form>
 </div>
