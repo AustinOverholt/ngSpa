@@ -1,4 +1,5 @@
 ﻿using HtmlAgilityPack;
+using ngSpa.Model.Domain;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,11 +11,11 @@ namespace ngSpa.Services
 {
     public class ScrapeService
     {
-        // pass in link to be parsed and 
-        public List<string> ParseHtml(string html, string keyword)
+        // pass in link to be parsed
+        public List<string> Scrape(Scrape model)
         {
 
-            var document = new HtmlWeb().Load(html + keyword);
+            var document = new HtmlWeb().Load(model.html);
             var urls = document.DocumentNode.Descendants("img")
                                             .Select(e => e.GetAttributeValue("src", null))
                                             .Where(s => !String.IsNullOrEmpty(s));

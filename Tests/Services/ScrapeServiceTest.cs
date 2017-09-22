@@ -2,6 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using ngSpa.Services;
 using System.Collections.Generic;
+using ngSpa.Model.Domain;
 
 namespace ngSpa.Tests.Services
 {
@@ -12,8 +13,12 @@ namespace ngSpa.Tests.Services
         public void ScrapeServiceMain()
         {
             ScrapeService svc = new ScrapeService();
-            List<string> html = svc.ParseHtml("https://www.wikipedia.org/", "");
-            Assert.IsNotNull(html);
+            var model = svc.Scrape(
+                new Scrape()
+                {
+                    html = "https://www.wikipedia.org/",
+                });
+            Assert.IsNotNull(model);
         }
     }
 }
