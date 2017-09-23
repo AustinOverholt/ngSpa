@@ -13,13 +13,6 @@
         vm.mainService = mainService;
         vm.postUsers = _postUsers;
         vm.$onInit = _init;
-        vm.config = [{
-            "displayLength": "10",
-            "displayStart": "0",
-            "sortCol": "0",
-            "sortDir": "asc",
-            "search": ""
-        }]
         vm.users = {};
         vm.scrapedResults = {};
         vm.usersForm = {};
@@ -103,7 +96,7 @@
             }
         }
 
-        function _deleteButton(data, index) {
+        function _deleteButton(data, index) { 
             mainService.delete("/api/users/", data)
                 .then(_deleteSuccess)
                 .catch(_deleteFailed)
