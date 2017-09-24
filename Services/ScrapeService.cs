@@ -16,8 +16,8 @@ namespace ngSpa.Services
         {
 
             var document = new HtmlWeb().Load(model.html);
-            var urls = document.DocumentNode.Descendants("img")
-                                            .Select(e => e.GetAttributeValue("src", null))
+            var urls = document.DocumentNode.Descendants(model.descendant) 
+                                            .Select(e => e.GetAttributeValue(model.attribute, null))
                                             .Where(s => !String.IsNullOrEmpty(s));
             List<string> list = urls.ToList();
             List<string> newList = new List<string>();

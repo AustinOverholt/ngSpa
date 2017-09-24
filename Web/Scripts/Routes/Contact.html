@@ -10,12 +10,14 @@
         <div class="form-group">
             <label for="Type">Type</label>
             <select name="Type">
-                <option value="src">Picture</option>
-                <option value="div">Div</option>
-                <option value="p">P</option>
+                <option value="img src">Picture</option>
+                <option value="div">Heading</option>
+                <option value="p">Paragraph</option>
             </select>
         </div>
         <button ng-click="mainCtrl.postScraper()" type="submit" class="btn btn-default">Submit</button>
     </form>
 </div>
+<!-- Display differently for different types
+    ex. if type is picture wrap in img src-->
 {{mainCtrl.scrapedResults}}

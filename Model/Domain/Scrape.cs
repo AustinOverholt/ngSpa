@@ -9,5 +9,7 @@ namespace ngSpa.Model.Domain
     public class Scrape
     {
         public string html { get; set; }
+        public string descendant { get; set; }
+        public string attribute { get; set; }
     }
 }
