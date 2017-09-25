@@ -45,6 +45,12 @@ namespace ngSpa.Web.Controllers.Api
                 return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ex);
             }
         }
+
+        //[Route(), HttpGet]
+        //public HttpResponseMessage Get()
+        //{
+        //    return Request.CreateResponse(HttpStatusCode.OK, ResponseMessage);
+        //}
         
     }
 }

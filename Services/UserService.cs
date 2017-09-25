@@ -25,7 +25,7 @@ namespace ngSpa.Services
                         userList.Add(model);
                     }
                 }
-                    conn.Close();
+                conn.Close();
             }
             return userList;
         }
