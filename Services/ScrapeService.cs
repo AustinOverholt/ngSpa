@@ -51,5 +51,19 @@ namespace ngSpa.Services
             }
             return id;
         }
+
+        private ScrapeDb Mapper(SqlDataReader reader)
+        {
+            ScrapeDb model = new ScrapeDb();
+            int index = 0;
+
+            model.Id = reader.GetInt32(index++);
+            model.ScrapedData = reader.GetString(index++);
+            model.CreatedDate = reader.GetDateTime(index++);
+            model.ModifiedDate = reader.GetDateTime(index++);
+            model.ModifiedBy = reader.GetString(index++);
+
+            return model;
+        }
     }
 }
