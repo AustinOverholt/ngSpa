@@ -1,7 +1,7 @@
 ﻿<br/>
 <div class="jumbotron">
     <h1>Scraping</h1>
-    <p class="lead">Welcome to Web Scraper</p>
+    <p class="lead"></p>
     <form name="scraperForm" role="form">
         <div class="form-group">
             <label for="Url">Url</label>
@@ -29,7 +29,7 @@
                 <th>Created Date</th>
                 <th>Modified Date</th>
                 <th>Modified By</th>
-                <th class="text-center" colspan="2">Actions</th>
+                <th class="text-center">Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -39,8 +39,7 @@
                 <td>{{items.CreatedDate | date:"MM/dd/yyyy 'at' h:mma" : '-1400'}}</td>
                 <td>{{items.ModifiedDate | date:"MM/dd/yyyy 'at' h:mma" : '-1400'}}</td>
                 <td>{{items.ModifiedBy}}</td>
-                <td><button ng-click="mainCtrl.editButton(items.Id)" class="btn btn-warning btn-sm">Edit</button></td>
-                <td><button ng-click="mainCtrl.deleteButton(items.Id, $index)" class="btn btn-danger btn-sm">Delete</button></td>
+                <td><button ng-click="mainCtrl.deleteScraped(items.Id, $index)" class="btn btn-danger btn-sm">Delete</button></td>
             </tr>
         </tbody>
     </table>
