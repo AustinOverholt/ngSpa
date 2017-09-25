@@ -281,8 +281,7 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
-    <Content Include="Scripts\Routes\About.html" />
-    <Content Include="Scripts\Routes\Contact.html" />
+    <Content Include="Scripts\Routes\Scraper.html" />
     <Content Include="Scripts\Routes\Home.html" />
     <Content Include="Scripts\Routes\Users.html" />
     <Content Include="Web.config" />

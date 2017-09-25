@@ -10,16 +10,10 @@
                     templateUrl: '/Scripts/Routes/Home.html'
             }
 
-            var about = {
-                    name: 'about',
-                    url: '/about',
-                    templateUrl: '/Scripts/Routes/About.html'
-            }
-
-            var contact = {
-                name: 'contact',
-                url: '/contact',
-                templateUrl: '/Scripts/Routes/Contact.html'
+            var scraper = {
+                name: 'scraper',
+                url: '/scraper',
+                templateUrl: '/Scripts/Routes/Scraper.html'
             }
 
             var users = {
@@ -30,8 +24,7 @@
             }
 
             $stateProvider.state(home);
-            $stateProvider.state(about);
-            $stateProvider.state(contact);
+            $stateProvider.state(scraper);
             $stateProvider.state(users);
 
         });
