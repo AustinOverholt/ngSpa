@@ -164,6 +164,7 @@ namespace ngSpa.Services
             return singleItem;
         }
 
+        // Mapper
         private Users Mapper(SqlDataReader reader)
         {
             Users model = new Users();

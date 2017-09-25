@@ -27,6 +27,7 @@ namespace ngSpa.Services
             return newList;
         }
 
+        // Insert
         public int ScrapeInsert(ScrapeAddRequest model)
         {
             int id = 0;
@@ -52,6 +53,7 @@ namespace ngSpa.Services
             return id;
         }
 
+        // Select All
         public List<ScrapeDb> SelectAll()
         {
             List<ScrapeDb> scrapeList = new List<ScrapeDb>();
@@ -72,9 +74,8 @@ namespace ngSpa.Services
             }
             return scrapeList;
         }
-       
-            
 
+        // Mapper
         private ScrapeDb Mapper(SqlDataReader reader)
         {
             ScrapeDb model = new ScrapeDb();

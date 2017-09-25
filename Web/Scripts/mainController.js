@@ -16,6 +16,7 @@
         vm.users = {};
         vm.scraperForm = {};
         vm.scrapedResults = {};
+        vm.scrapedDb = {};
         vm.scraperHtml = {};
         vm.scraperAttributes = {};
         vm.usersForm = {};
@@ -29,13 +30,11 @@
         // The fold 
 
         function _init() {
-            console.log("controller initialized");
-            // do post for grid
             _getUsers();
+            _getScrapedData();
         }
 
         function _getUsers() {
-            console.log("get users called");
             // on page load get list of users
             mainService.get("/api/users/")
                 .then(_getUsersSuccess)
@@ -44,11 +43,25 @@
             function _getUsersSuccess(res) {
                 console.log("Get users success", res);
                 vm.users = res.data.Items;
-                console.log(vm.users);
             }
 
             function _getUsersFailed(err) {
                 console.log("Get users failed", err);
+            }
+        }
+
+        function _getScrapedData() {
+            mainService.get("/api/scrape/")
+                .then(_getSuccess)
+                .catch(_getFailed);
+
+            function _getSuccess(res) {
+                vm.scrapedDb = res.data.Items;
+                console.log("Get Success", res);
+            }
+
+            function _getFailed(err) {
+                console.log("Get Failed", res);
             }
         }
 
@@ -146,6 +159,5 @@
                 console.log("Post Failed", err);
             }
         } 
-
     }
 })();
