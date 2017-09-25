@@ -15,7 +15,7 @@ namespace ngSpa.Services
         {
 
             var document = new HtmlWeb().Load(model.html);
-            var urls = document.DocumentNode.Descendants("img") 
+            var urls = document.DocumentNode.Descendants("img")
                                             .Select(e => e.GetAttributeValue("src", null))
                                             .Where(s => !String.IsNullOrEmpty(s));
             List<string> list = urls.ToList();
@@ -51,6 +51,29 @@ namespace ngSpa.Services
             }
             return id;
         }
+
+        public List<ScrapeDb> SelectAll()
+        {
+            List<ScrapeDb> scrapeList = new List<ScrapeDb>();
+            using (SqlConnection conn = new SqlConnection(connString))
+            {
+                conn.Open();
+                using (SqlCommand cmd = new SqlCommand("dbo.ScrapedData_SelectAll", conn))
+                {
+                    cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                    SqlDataReader reader = cmd.ExecuteReader(System.Data.CommandBehavior.CloseConnection);
+                    while (reader.Read())
+                    {
+                        ScrapeDb model = Mapper(reader);
+                        scrapeList.Add(model);
+                    }
+                }
+                conn.Close();
+            }
+            return scrapeList;
+        }
+       
+            
 
         private ScrapeDb Mapper(SqlDataReader reader)
         {
