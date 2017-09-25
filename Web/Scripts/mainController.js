@@ -122,16 +122,30 @@
 
             function _postSuccess(res) {
                 console.log("Post Successful", res);
-                vm.scrapedResults = res.data.Items;
-                // insert scraped results into db
+                var scrapedData = res.data.Items;
+                vm.scrapedResults.ScrapedData = scrapedData.toString().replace(/,/g, " "); // Take response, turn array into string, get rid of commas 
+                vm.scrapedResults.ModifiedBy = "Austin";
+                _postScrapeData(vm.scrapedResults);
             }
 
             function _postFailed(err) {
                 console.log("Post Failed", err);
             }
-
-
         }
+
+        function _postScrapeData(data) {
+            mainService.post("/api/scrape/insert", data)
+                .then(_postSuccess)
+                .catch(_postFailed)
+
+            function _postSuccess(res) {
+                console.log("Post Successful", res);
+            }
+
+            function _postFailed(err) {
+                console.log("Post Failed", err);
+            }
+        } 
 
     }
 })();
