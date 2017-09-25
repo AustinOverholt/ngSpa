@@ -1,4 +1,5 @@
 ﻿using ngSpa.Model.Domain;
+using ngSpa.Model.Requests;
 using ngSpa.Model.Responses;
 using ngSpa.Services;
 using System;
@@ -25,6 +26,21 @@ namespace ngSpa.Web.Controllers.Api
 
             }
             catch (Exception ex) 
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ex);
+            }
+        }
+
+        [Route("insert"), HttpPost]
+        public HttpResponseMessage InsertData(ScrapeAddRequest model)
+        {
+            try
+            {
+                ItemResponse<int> resp = new ItemResponse<int>();
+                resp.Item = scrapeService.ScrapeInsert(model);
+                return Request.CreateResponse(HttpStatusCode.OK, resp);
+            }
+            catch (Exception ex)
             {
                 return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ex);
             }

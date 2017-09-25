@@ -9,8 +9,8 @@
         </div> <!--Add a filter-->
         <div class="form-group">
             <label for="Type">Type</label>
-            <select name="Type">
-                <option value="img src">Picture</option>
+            <select ng-model="mainCtrl.scraperForm.html" name="Type">
+                <option value="{descendant: 'img', attribute: 'src'}">Picture</option>
                 <option value="div">Heading</option>
                 <option value="p">Paragraph</option>
             </select>

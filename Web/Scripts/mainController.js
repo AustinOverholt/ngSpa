@@ -14,7 +14,10 @@
         vm.postUsers = _postUsers;
         vm.$onInit = _init;
         vm.users = {};
+        vm.scraperForm = {};
         vm.scrapedResults = {};
+        vm.scraperHtml = {};
+        vm.scraperAttributes = {};
         vm.usersForm = {};
         vm.scraperForm = {};
         vm.editUser = null;
@@ -112,7 +115,7 @@
         }
 
         function _postScraper() {
-            console.log("scraper clicked");
+            console.log(vm.scraperForm);
             mainService.post("/api/scrape/", vm.scraperForm)
                 .then(_postSuccess)
                 .catch(_postFailed)
@@ -120,6 +123,7 @@
             function _postSuccess(res) {
                 console.log("Post Successful", res);
                 vm.scrapedResults = res.data.Items;
+                // insert scraped results into db
             }
 
             function _postFailed(err) {
