@@ -46,11 +46,21 @@ namespace ngSpa.Web.Controllers.Api
             }
         }
 
-        //[Route(), HttpGet]
-        //public HttpResponseMessage Get()
-        //{
-        //    return Request.CreateResponse(HttpStatusCode.OK, ResponseMessage);
-        //}
-        
+        [Route(), HttpGet]
+        public HttpResponseMessage Get()
+        {
+            try
+            {
+                ItemsResponse<ScrapeDb> resp = new ItemsResponse<ScrapeDb>();
+                resp.Items = scrapeService.SelectAll();
+                return Request.CreateResponse(HttpStatusCode.OK, resp);
+            } 
+            catch (Exception ex)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ex);
+            }
+            
+        }
+
     }
 }
