@@ -81,7 +81,7 @@ namespace ngSpa.Services
             using (SqlConnection conn = new SqlConnection(connString))
             {
                 conn.Open();
-                using (SqlCommand cmd = new SqlCommand("dbo.ScrapeData_Delete", conn))
+                using (SqlCommand cmd = new SqlCommand("dbo.ScrapedData_Delete", conn))
                 {
                     cmd.CommandType = System.Data.CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@Id", id);

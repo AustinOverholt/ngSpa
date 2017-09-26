@@ -62,5 +62,20 @@ namespace ngSpa.Web.Controllers.Api
             
         }
 
+        [Route("{id:int}"), HttpDelete]
+        public HttpResponseMessage Delete(int id)
+        {
+            try
+            {
+                SuccessResponse resp = new SuccessResponse();
+                scrapeService.Delete(id);
+                return Request.CreateResponse(HttpStatusCode.OK, resp);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ex);  
+            }
+        }
+
     }
 }
