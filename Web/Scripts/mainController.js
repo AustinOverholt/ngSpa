@@ -25,6 +25,7 @@
         vm.deleteButton = _deleteButton;
         vm.editButton = _editButton;
         vm.postScraper = _postScraper;
+        vm.deleteScrapeData = _deleteScrapeData;
         
            
         // The fold 
@@ -167,7 +168,7 @@
 
             function _deleteSuccess(res) {
                 console.log("Delete Success", res);
-                vm.users.splice(index, 1);
+                vm.scrapedDb.splice(index, 1);
             }
 
             function _deleteFailed(err) {
