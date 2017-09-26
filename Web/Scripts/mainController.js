@@ -75,6 +75,7 @@
 
                 function _postSuccess(res) {
                     console.log("Post users success", res);
+                    _getUsers();
                 }
 
                 function _postFailed(err) {
@@ -140,6 +141,7 @@
                 vm.scrapedResults.ScrapedData = scrapedData.toString().replace(/,/g, " "); // Take response, turn array into string, get rid of commas 
                 vm.scrapedResults.ModifiedBy = "Austin";
                 _postScrapeData(vm.scrapedResults);
+                
             }
 
             function _postFailed(err) {
@@ -154,6 +156,7 @@
 
             function _postSuccess(res) {
                 console.log("Post Successful", res);
+                _getScrapedData();
             }
 
             function _postFailed(err) {
