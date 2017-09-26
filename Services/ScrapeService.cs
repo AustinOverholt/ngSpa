@@ -75,6 +75,23 @@ namespace ngSpa.Services
             return scrapeList;
         }
 
+        // Delete 
+        public void Delete(int id)
+        {
+            using (SqlConnection conn = new SqlConnection(connString))
+            {
+                conn.Open();
+                using (SqlCommand cmd = new SqlCommand("dbo.ScrapeData_Delete", conn))
+                {
+                    cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@Id", id);
+
+                    cmd.ExecuteNonQuery();
+                }
+                conn.Close();
+            }
+        }
+
         // Mapper
         private ScrapeDb Mapper(SqlDataReader reader)
         {
