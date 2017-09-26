@@ -159,5 +159,20 @@
                 console.log("Post Failed", err);
             }
         } 
+
+        function _deleteScrapeData(data, index) {
+            mainService.delete("/api/scrape/", data)
+                .then(_deleteSuccess)
+                .catch(_deleteFailed)
+
+            function _deleteSuccess(res) {
+                console.log("Delete Success", res);
+                vm.users.splice(index, 1);
+            }
+
+            function _deleteFailed(err) {
+                console.log("Delete Failed", err);
+            }
+        }
     }
 })();
