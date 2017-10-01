@@ -68,7 +68,7 @@
 
         function _postUsers() {
             console.log(vm.usersForm);
-            if (vm.editUser == null) {
+            if (vm.editUser === null) {
                 mainService.post("/api/users/", vm.usersForm)
                     .then(_postSuccess)
                     .catch(_postFailed);
