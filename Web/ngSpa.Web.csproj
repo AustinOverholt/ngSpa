@@ -264,6 +264,7 @@
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\Directives\userInfoCard.html" />
     <Content Include="Scripts\Directives\userInfoCard.js" />
     <Content Include="Scripts\helloComponent.js" />
     <Content Include="Scripts\jquery-3.1.1.js" />

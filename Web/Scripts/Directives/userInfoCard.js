@@ -6,7 +6,7 @@
 
     function userInfoCard() {
         return {
-            template: "User Info Card <br/> Name: {{mainCtrl.users[0].FirstName}} <br/> Initial: {{mainCtrl.users[0].MiddleInitial}} <br/> Last Name: {{mainCtrl.users[0].LastName}} </br>",
+            templateUrl: "/Scripts/Directives/userInfoCard.html",
             restrict: "E"
         }
     }
