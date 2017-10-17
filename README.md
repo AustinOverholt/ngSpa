@@ -1,6 +1,6 @@
 # ngSpa
 
-A single page angular application 
+A single page angular application.
 
 I use this project to test out new things I'm working on and learning.
 
