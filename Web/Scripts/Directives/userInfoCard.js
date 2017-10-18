@@ -6,8 +6,11 @@
 
     function userInfoCard() {
         return {
-            templateUrl: "/Scripts/Directives/userInfoCard.html",
-            restrict: "E"
+            templateUrl: "/Scripts/Directives/userInfoCard.html", // takes HTML from template
+            restrict: "E", // restricts to element type
+            controller: function ($scope) { // controller for directive functionality
+
+            }
         }
     }
 })();
