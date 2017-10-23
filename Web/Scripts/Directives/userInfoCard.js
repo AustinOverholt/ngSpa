@@ -8,6 +8,9 @@
         return {
             templateUrl: "/Scripts/Directives/userInfoCard.html", // takes HTML from template
             restrict: "E", // restricts to element type
+            //scope: {
+            //    initialCollapsed: '@collapsed'
+            //},
             controller: function ($scope) { // controller for directive functionality
                 $scope.collapsed = false; // by default panel is not collapsed
                 $scope.collapse = function () {
